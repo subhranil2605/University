@@ -1,16 +1,17 @@
 from typing import Callable
 import numpy as np
+from tabulate import tabulate
 
 
 # secant method function
 def secant(func: Callable[[float], float],
            point_1: float,
            point_2: float,
-           e: float = 0.001) -> tuple[float, str]:
+           e: float = 0.001) -> tuple[float, list]:
     """
     Secant method in python
     """
-    s: str = "n\t|point_1\t\t|point_2\t\t|root\t\t|error\t\t|\n"
+    s: list = []
     iteration: int = 0
     while (err := abs(point_2 - point_1)) >= e:
         f_point_1: float = func(point_1)
@@ -19,7 +20,7 @@ def secant(func: Callable[[float], float],
         root: float = (point_1 * f_point_2 - point_2 * f_point_1) / (f_point_2 - f_point_1)
 
         # for table
-        s += f"{iteration + 1}\t|{point_1:0.5f}\t\t|{point_2:0.5f}\t\t|{root:0.5f}\t|{err:0.5f}\t|\n"
+        s.append([iteration + 1, point_1, point_2, root, err])
 
         # updating values
         point_1 = point_2
@@ -41,8 +42,10 @@ if __name__ == '__main__':
     user_e: float = 0.001
 
     # calling secant method
-    result: tuple[float, str] = secant(user_func, user_point_1, user_point_2, user_e)
+    result: tuple[float, list] = secant(user_func, user_point_1, user_point_2, user_e)
 
     print("The root is: ", result[0])
     print()
-    print(result[1])
+    table = result[1]
+    header = ["n", "point_1", "point_2", "root", "error"]
+    print(tabulate(table, header, tablefmt="grid"))
