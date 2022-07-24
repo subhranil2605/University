@@ -1,0 +1,10 @@
+The function is: x**2 + x*y + y**2 - 7
+Partial diff w.r.t. x is: 2*x + y
+Partial diff w.r.t. y is: x + 2*y
+
+The function is: x**3 + y**3 - 9
+Partial diff w.r.t. x is: 3*x**2
+Partial diff w.r.t. y is: 3*y**2
+
+Approximate value of x: 2.001258
+Approximate value of y: 0.998737
