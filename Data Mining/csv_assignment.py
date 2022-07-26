@@ -51,51 +51,52 @@ class CsvNil:
         return classes
 
 
-"""# 1. Read the CSV"""
+if __name__ == '__main__':
+    """# 1. Read the CSV"""
 
-csvnil = CsvNil('/content/dlbcl-fl.csv')
+    csvnil = CsvNil('/content/dlbcl-fl.csv')
 
-"""# 2. Print the CSV"""
+    """# 2. Print the CSV"""
 
-print(csvnil.print_dataset())
+    print(csvnil.print_dataset())
 
-"""# 3. Count the number of rows"""
+    """# 3. Count the number of rows"""
 
-print(csvnil.count_rows() - 1)
+    print(csvnil.count_rows() - 1)
 
-"""# 4. Count the number of columns"""
+    """# 4. Count the number of columns"""
 
-print(csvnil.count_cols())
+    print(csvnil.count_cols())
 
-"""# 5. Print the first row (column label)"""
+    """# 5. Print the first row (column label)"""
 
-print(csvnil.column_names())
+    print(csvnil.column_names())
 
-"""# 6. Print the first row (without column label)"""
+    """# 6. Print the first row (without column label)"""
 
-print(csvnil.first_row())
+    print(csvnil.first_row())
 
-"""# 7. Print the last column (class label)"""
+    """# 7. Print the last column (class label)"""
 
-print(csvnil.last_column_label())
+    print(csvnil.last_column_label())
 
-"""# 8. Print the last column (without class label)"""
+    """# 8. Print the last column (without class label)"""
 
-print(csvnil.last_column())
+    print(csvnil.last_column())
 
-"""# 9. Print the unique class label"""
+    """# 9. Print the unique class label"""
 
-print(csvnil.unique_class())
+    print(csvnil.unique_class())
 
-"""# 10. Divide the dataset into class labels"""
+    """# 10. Divide the dataset into class labels"""
 
-split_data_dict: dict = csvnil.split_dataset()
+    split_data_dict: dict = csvnil.split_dataset()
 
-print(split_data_dict)
+    print(split_data_dict)
 
-dlbcl = split_data_dict['DLBCL']
-fl = split_data_dict['FL']
+    dlbcl = split_data_dict['DLBCL']
+    fl = split_data_dict['FL']
 
-print(len(dlbcl))
+    print(len(dlbcl))
 
-print(len(fl))
+    print(len(fl))
