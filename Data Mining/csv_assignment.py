@@ -54,7 +54,7 @@ class CsvNil:
 if __name__ == '__main__':
     """# 1. Read the CSV"""
 
-    csvnil = CsvNil('/content/dlbcl-fl.csv')
+    csvnil = CsvNil('dlbcl-fl.csv')
 
     """# 2. Print the CSV"""
 
