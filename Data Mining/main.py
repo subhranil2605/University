@@ -1,19 +1,16 @@
-# 1. Read the dataset
+class Csvnil:
+    def __init__(self, filename):
+        self.filename = filename
 
-# 2. Print the dataset as output
+    def read_dataset(self):
+        with open(self.filename) as f_obj:
+            for row in f_obj.readlines():
+                yield row
 
-# 3. Count the number of rows
+    def print_dataset(self):
+        [print(row) for row in self.read_dataset()]
 
-# 4. Count the number of columns
 
-# 5. Print the first row (column label)
-
-# 6. Print the first row (without column label)
-
-# 7. Print the last column (class label)
-
-# 8. Print the last column (without class label)
-
-# 9. Print the unique class label
-
-# 10. Divide the dataset into class labels
+if __name__ == '__main__':
+    csvnil = Csvnil('dlbcl-fl.csv')
+    csvnil.print_dataset()

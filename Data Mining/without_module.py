@@ -11,11 +11,8 @@ def print_dataset(filename: str) -> None:
 
 
 # 3. Count the number of rows
-def count_rows(filename: str) -> None:
-    number_of_rows: int = 0
-    for _ in read_dataset(filename):
-        number_of_rows += 1
-    print(f"There are {number_of_rows - 1} rows")
+def count_rows(filename: str):
+    return sum([1 for _ in read_dataset(filename)])
 
 
 # 4. Count the number of columns
@@ -25,7 +22,7 @@ def count_cols(filename: str) -> None:
 
 
 # 5. Print the first row (column label)
-def column_names(filename: str) -> list:
+def column_names(filename: str) -> list[str]:
     data = read_dataset(filename)
     return [d.split(',') for i, d in enumerate(data) if i == 0][0]
 
@@ -54,9 +51,8 @@ def unique_class(filename: str) -> list:
 
 # 10. Divide the dataset into class labels
 def split_dataset(filename: str) -> dict:
-    data = read_dataset(filename)
     classes = {}
-    for i in data:
+    for i in read_dataset(filename):
         for c in unique_class(filename):
             if i.split(',')[-1].strip() == c:
                 classes.setdefault(c, []).append(i)
@@ -65,7 +61,16 @@ def split_dataset(filename: str) -> dict:
 
 
 if __name__ == '__main__':
-    a = split_dataset('dlbcl-fl.csv')
+    # reading the dataset
+    # dataset = read_dataset('dlbcl-fl.csv')
 
-    for class_name in a.keys():
-        print(f"The number of values in class '{class_name}' is: {len(a[class_name])}")
+    # print the dataset
+    # print_dataset('dlbcl-fl.csv')
+
+    # count rows
+    print(count_rows('dlbcl-fl.csv'))
+
+    # a = split_dataset('dlbcl-fl.csv')
+    #
+    # for class_name in a.keys():
+    #     print(f"The number of values in class '{class_name}' is: {len(a[class_name])}")

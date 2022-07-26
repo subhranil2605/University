@@ -1,9 +1,5 @@
-with open('dlbcl-fl.csv') as f:
-    data = f.read()
+import pandas as pd
 
-column_names = data.split('\n')[0]
+df = pd.read_csv('dlbcl-fl.csv')
 
-rows = data.split('\n')[1:]
-
-for i in range(5):
-    print(rows[i])
+print(df)
