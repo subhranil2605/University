@@ -1,6 +1,7 @@
 class CsvNil:
     def __init__(self, filename: str):
         self.filename = filename
+        
 
     def read_dataset(self):
         """ Read the csv file """
@@ -8,37 +9,46 @@ class CsvNil:
             for row in f_obj.readlines():
                 yield row
 
+
     def print_dataset(self) -> None:
         """ Print the csv file """
         [print(row) for row in self.read_dataset()]
 
+
     def count_rows(self) -> int:
         """ Count the number of rows """
         return sum([1 for _ in self.read_dataset()])
+    
 
     def count_cols(self) -> int:
         """ Count the number of columns """
         return [len(d.split(',')) for i, d in enumerate(self.read_dataset()) if i == 0][0]
+    
 
     def column_names(self):
         """ Print the first row (column label) """
         return [d.split(',') for i, d in enumerate(self.read_dataset()) if i == 0][0]
+    
 
     def first_row(self):
         """ Print the first row (without column label) """
         return [d.split(',') for i, d in enumerate(self.read_dataset()) if i == 1][0]
+    
 
     def last_column_label(self) -> str:
         """ Print the last column (class label) """
         return self.column_names()[-1].strip()
+    
 
     def last_column(self) -> list:
         """ Print the last column (without class label) """
         return [d.split(',')[-1].strip() for i, d in enumerate(self.read_dataset()) if i != 0]
+    
 
     def unique_class(self) -> list:
         """ Print the unique class label """
         return list(set(self.last_column()))
+    
 
     def split_dataset(self) -> dict:
         """ Divide the dataset into class labels """
