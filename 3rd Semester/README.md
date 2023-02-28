@@ -8,5 +8,5 @@
     - [] Agglomerative Clustering 
     - [] DBSCAN
 ## Classification
-    - [] KNN
+    - [x] KNN
     - [] Decision Tree
